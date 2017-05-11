@@ -235,6 +235,10 @@ public class lecture extends javax.swing.JFrame {
         // TODO add your handling code here:
         String rno = jTextField1.getText();
         try{
+            if(rno.equals("")){
+                JOptionPane.showMessageDialog(null,"Enter Rollno!");
+            }
+            else{
             Class.forName("java.sql.DriverManager");
             com.mysql.jdbc.Connection con = (com.mysql.jdbc.Connection) DriverManager.getConnection
                             ("jdbc:mysql://localhost:3306/eon", "root", "root");
@@ -251,7 +255,7 @@ public class lecture extends javax.swing.JFrame {
             }
             String result = "ID: "+id+" Name: "+name+" email: "+email+" Mobno: "+mobno;
             JOptionPane.showMessageDialog(null, result);
-
+            }
         }   
         catch (Exception e) {
             //return e.getMessage();
@@ -262,6 +266,10 @@ public class lecture extends javax.swing.JFrame {
         // TODO add your handling code here:
         String rno = jTextField3.getText();
         try{
+            if(rno.equals("")){
+                JOptionPane.showMessageDialog(null,"Enter Rollno!");
+            }
+            else{
             Class.forName("java.sql.DriverManager");
             com.mysql.jdbc.Connection con = (com.mysql.jdbc.Connection) DriverManager.getConnection
                             ("jdbc:mysql://localhost:3306/eon", "root", "root");
@@ -270,6 +278,7 @@ public class lecture extends javax.swing.JFrame {
             
             String result = "Record of ID: "+rno+" sucessfully deleted";
             JOptionPane.showMessageDialog(null, result);
+            }
 
         }   
         catch (Exception e) {

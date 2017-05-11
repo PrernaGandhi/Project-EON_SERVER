@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package eon;
+
+import javax.validation.constraints.*;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -126,15 +128,27 @@ public class login extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+   @NotNull(message = "no filled")
+   public String uname, pwd;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String uname, pwd;
+    
     uname = jTextField1.getText();
     pwd = jPasswordField1.getText();
+    
     if(uname.equals("admin") && pwd.equals("admin")){
         new lecture().setVisible(true);
         this.setVisible(false);
     }
+    else if(uname.equals("") && pwd.equals("")){
+                JOptionPane.showMessageDialog(null,"Enter Login details!");
+            }
+    else if(uname.equals("")){
+                JOptionPane.showMessageDialog(null,"Enter Username!");
+            }
+    else if(pwd.equals("")){
+                JOptionPane.showMessageDialog(null,"Enter Password!");
+            }
+  
     
     }//GEN-LAST:event_jButton1ActionPerformed
 

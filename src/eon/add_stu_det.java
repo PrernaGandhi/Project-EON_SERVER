@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package eon;
-
+import javax.validation.constraints.*;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -137,9 +137,10 @@ public class add_stu_det extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    @NotNull
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        int i = 0;
         String id = jTextField1.getText();
         String password = jTextField2.getText();
         String name = jTextField3.getText();
@@ -147,6 +148,10 @@ public class add_stu_det extends javax.swing.JFrame {
         String phno = jTextField5.getText();
         
         try{
+            if(id.equals("")||password.equals("")||name.equals("")||email.equals("")||phno.equals("")){
+                JOptionPane.showMessageDialog(null,"Enter all details!");
+            }
+            else{
             Class.forName("java.sql.DriverManager");
             com.mysql.jdbc.Connection con = (com.mysql.jdbc.Connection) DriverManager.getConnection
                             ("jdbc:mysql://localhost:3306/eon", "root", "root");
@@ -155,15 +160,23 @@ public class add_stu_det extends javax.swing.JFrame {
             stmt.executeUpdate(query_login);
             String query_details = "insert into details values ('"+id+"','"+name+"','"+email+"','"+phno+"');";
             stmt.executeUpdate(query_details);
+            }
 
         }   
         catch (Exception e) {
+            i++;
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+        if(!(id.equals("")||password.equals("")||name.equals("")||email.equals("")||phno.equals("")||(i==1))){
+                JOptionPane.showMessageDialog(null,"Account Created");
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+                jTextField4.setText("");
+                jTextField5.setText("");
+            }
         
-        JOptionPane.showMessageDialog(this, "Account Created.");
-        new lecture().setVisible(true);
-        this.setVisible(false);
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
