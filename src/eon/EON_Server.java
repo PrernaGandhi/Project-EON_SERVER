@@ -19,7 +19,7 @@ public class EON_Server {
        System.out.println("Server starting");
        try{
             LocateRegistry.createRegistry(1099);
-            System.setProperty("java.rmi.server.hostname", "192.168.1.1");
+            //System.setProperty("java.rmi.server.hostname", "192.168.1.1");
             Eon_intf request_obj = new Server_Def();
             Naming.rebind("rmi://localhost:1099/eon",request_obj);
             System.out.println("Running on localhost @ port 1099");
